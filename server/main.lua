@@ -4,7 +4,7 @@ lib.callback.register('esx_blackmarket:callabck:buy', function(source, key, acco
     local player = ESX.GetPlayerFromId(source)
     if player then
         local distance = #(player.getCoords(true) - cfg.coords[key].xyz)
-        if distance > 2 then return false, "👀" end
+        if distance > 4 then return false, "👀" end
         local acc = player.getAccount(account)
         if acc.money < (cfg.price[key][item]*count) then return false, ("Vous n'avez pas assez d'argent (%s)!"):format(acc.label) end
         if ox_inv:CanCarryItem(source, item, count) then
