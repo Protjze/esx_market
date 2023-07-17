@@ -41,11 +41,12 @@ local function CreatePedObj(model, coords, data, weapon)
     lib.requestModel(model)
 
     local ped = CreatePed(_, self.model, self.vec4.x, self.vec4.y, self.vec4.z, self.vec4.w, false, true)
-
+    
     self.ped = ped
     SetBlockingOfNonTemporaryEvents(ped, self.data.blockevent)
     SetEntityInvincible(ped, self.data.godmode)
     FreezeEntityPosition(ped, self.data.freeze)
+    SetModelAsNoLongerNeeded(self.model)
 
     if self.data.variation then
         SetPedComponentVariation(ped, self.data.variation)
